@@ -1,0 +1,28 @@
+[project]
+name = "patterns"
+version = "0.1.0"
+description = "Patterns for use with Project Forge"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "bump-my-version",
+    "generate-changelog",
+    "uv",
+]
+
+test = [
+    "coverage",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-sugar",
+]
+docs = [
+
+]
+
+[tool.uv]
+default-groups = ["dev", "test", "docs"]
