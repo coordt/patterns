@@ -1,0 +1,32 @@
+template_location = "{{ repo_name }}"
+skip = ["{{ repo_name }}/_*"]
+
+[extra_context]
+license_template = "{% raw %}{{ repo_name }}{% endraw %}/{{ license }}"
+
+
+[[questions]]
+name = "repo_name"
+prompt = "What is the name of the project repository?"
+type = "str"
+default = "my-repo"
+
+[[questions]]
+name = "author"
+prompt = "What is the name of the author?"
+type = "str"
+default = "Who am I?"
+
+[[questions]]
+name = "license"
+prompt = "Under what license is this code published?"
+type = "str"
+choices = [
+    { label = "2-Clause BSD License", value = "_BSD-2-Clause" },
+    { label = "3-Clause BSD License", value = "_BSD-3-Clause" },
+    { label = "Apache License, Version 2.0", value = "_Apache-2.0" },
+    { label = "GNU General Public License version 3", value = "_GPL-3.0" },
+    { label = "GNU Lesser General Public License version 3", value = "_LGPL-3.0" },
+    { label = "MIT License", value = "_MIT" },
+    { label = "Mozilla Public License 2.0", value = "_MPL-2.0" },
+]

@@ -1,0 +1,18 @@
+template_location = "{{ repo_name }}"
+copy_only = [
+    ".github/**/*.jinja",
+    ".github/workflows/*",
+    ".github/actions/*",
+]
+
+[[questions]]
+name = "repo_name"
+prompt = "What is the name of the project repository?"
+type = "str"
+default = "{{ package_name|replace('_', '-') }}"
+
+[[questions]]
+name = "github_user"
+default = "whoami"
+type = "str"
+prompt = "What is the name of the GitHub user or organization?"
