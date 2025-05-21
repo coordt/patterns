@@ -1,9 +1,13 @@
-name: Display version hint
+{% raw %}name: Display version hint
 
 on:
   pull_request:
     types: [synchronize, opened, reopened, ready_for_review]
-    branches: [master]
+    branches: [{{ default_branch}}]
+
+permissions:
+  contents: read
+  pull-requests: write
 
 concurrency: version-preview-${{ github.ref }}
 
@@ -32,7 +36,7 @@ jobs:
 
       - name: Get the release hint
         id: changelog
-        uses: callowayproject/generate-changelog@v0
+        uses: docker://ghcr.io/callowayproject/generate-changelog:v0
         with:
           branch_override: ${{ github.event.pull_request.base.ref }}
 
@@ -70,3 +74,4 @@ jobs:
             **Version hint:** ${{ env.RELEASE_KIND }}
             **Current version:** ${{ env.CURRENT_VERSION }}
             **New version (when merged):** ${{ env.NEW_VERSION }}
+{% endraw %}

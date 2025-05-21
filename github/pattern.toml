@@ -1,0 +1,28 @@
+template_location = "{{ repo_name }}"
+
+[[questions]]
+name = "project_name"
+prompt = "What is the human-friendly name of the project?"
+type = "str"
+default = "My Project"
+
+[[questions]]
+name = "package_name"
+prompt = "What is the name of the Python package?"
+type = "str"
+default = "{{ project_name|lower|replace(' ', '_') }}"
+
+[[questions]]
+name = "repo_name"
+prompt = "What is the name of the project repository?"
+type = "str"
+default = "{{ package_name|replace('_', '-') }}"
+
+[[questions]]
+name = "default_branch"
+prompt = "What is the default branch name?"
+type = "str"
+choices = [
+    { label = "main", value = "main" },
+    { label = "master", value = "master" },
+]

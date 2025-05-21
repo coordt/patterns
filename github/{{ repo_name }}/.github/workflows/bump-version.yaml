@@ -1,8 +1,8 @@
-name: Bump the version on merge
+{% raw %}name: Bump the version on merge
 on:
   pull_request:
     types: [closed]
-    branches: [master]
+    branches: [{{ default_branch }}]
 
 jobs:
   bump-version:
@@ -12,6 +12,7 @@ jobs:
       contents: write
     outputs:
       build_package: ${{ steps.bump-version.outputs.build_package }}
+      tag_name: ${{ steps.bump-version.outputs.tag_name }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
@@ -19,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
 
@@ -37,7 +38,7 @@ jobs:
 
       - name: Generate changelog and release hint
         id: changelog
-        uses: callowayproject/generate-changelog@v0
+        uses: docker://ghcr.io/callowayproject/generate-changelog:v0
 
       - name: Bump version
         id: bump-version
@@ -52,17 +53,8 @@ jobs:
               bump-my-version bump --allow-dirty --verbose "$RELEASE_KIND"
               git push
               git push --tags
-              echo "build_package=false" >> $GITHUB_OUTPUT
-              ;;
-            dev)
-              echo "Intentionally not bumping version for dev release"
-              echo "build_package=false" >> $GITHUB_OUTPUT
-              # to build a dev release
-              # bump-my-python bump --allow-dirty --verbose --no-commit --no-tag
-              # echo "build_package=true" >> $GITHUB_OUTPUT
-              ;;
-            no-release)
-              echo "build_package=false" >> $GITHUB_OUTPUT
+              echo "tag_name=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
+              echo "build_package=true" >> $GITHUB_OUTPUT
               ;;
             *)
               echo "build_package=false" >> $GITHUB_OUTPUT
@@ -72,4 +64,12 @@ jobs:
   call-build-python:
     needs: bump-version
     if: ${{ needs.bump-version.outputs.build_package == 'true' }}
+    permissions:
+      contents: write
+      attestations: write
+      id-token: write
+      packages: write
     uses: ./.github/workflows/build-python.yaml
+    with:
+      ref: ${{ needs.bump-version.outputs.tag_name }}
+{% endraw %}
