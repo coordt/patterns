@@ -58,17 +58,26 @@ default-groups = ["dev", "test", "docs"]
 [tool.coverage.run]
 branch = true
 omit = ["**/test_*.py", "**/__main__.py"]
+source = ["{{ package_name }}"]
 
 [tool.coverage.report]
-omit = [
-    "*site-packages*",
-    "*tests*",
-    "*.tox*",
-]
 show_missing = true
 exclude_lines = [
-    "raise NotImplementedError",
+    # a more strict default pragma
+    "pragma: no cover",
     "pragma: no-coverage",
+
+    # allow defensive code
+    "^\\s*raise AssertionError\\b",
+    "^\\s*raise NotImplementedError\\b",
+    "^\\s*return NotImplemented\\b",
+    "^\\s*raise$",
+
+    # typing-related code
+    "^if (False|TYPE_CHECKING):",
+    ": \\.\\.\\.(\\s*#.*)?$",
+    "^ +\\.\\.\\.$",
+    "-> ['\"]?NoReturn['\"]?:",
 ]
 
 [tool.pytest.ini_options]
@@ -76,6 +85,7 @@ addopts = [
     "--cov={{ package_name }}",
     "--cov-branch",
     "--cov-report=term",
+    "--cov-report=html",
     "--cov-report=html",
 ]
 norecursedirs = [

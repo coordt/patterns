@@ -1,17 +1,26 @@
 template_location = "{{ repo_name }}"
-copy_only = [
-    ".github/**/*.jinja",
-    ".github/workflows/*",
-    ".github/actions/*",
-]
 
 [extra_context.dependencies]
-"prod" = []
+"prod" = [
+    "fastapi[standard]",
+    "opentelemetry-api",
+    "opentelemetry-api>=1.32.0",
+    "opentelemetry-exporter-otlp",
+    "opentelemetry-instrumentation-fastapi",
+    "opentelemetry-sdk",
+    "opentelemetry-sdk>=1.32.0",
+    "orjson>=3.8.12",
+    "pydantic-settings>=2.8.1",
+    "structlog>=23.1.0",
+]
 "test" = [
     "coverage",
     "pre-commit",
     "pytest-cov",
     "pytest",
+    "pytest-asyncio",
+    "pytest-socket",
+    "httpx",
 ]
 "dev" = [
     "bump-my-version",
