@@ -4,8 +4,8 @@ concurrency: docs
 
 on:
   push:
-    branches: [$default-branch]
-
+    branches: [ {{ default_branch }}]
+{% raw %}
 jobs:
   publish-docs:
 
@@ -39,3 +39,4 @@ jobs:
 
     - name: Build and publish docs
       run: uv run mkdocs gh-deploy --strict
+  {% endraw %}

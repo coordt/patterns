@@ -29,8 +29,9 @@ skip = [
 [[questions]]
 name = "project_name"
 prompt = "What is the human-friendly name of the project?"
+help = "For example, 'My Project'"
 type = "str"
-default = "My Project"
+default = ""
 
 [[questions]]
 name = "package_name"
@@ -46,6 +47,6 @@ default = "{{ package_name|replace('_', '-') }}"
 
 [[questions]]
 name = "github_user"
-default = "whoami"
+default = ""
 type = "str"
 prompt = "What is the name of the GitHub user or organization?"

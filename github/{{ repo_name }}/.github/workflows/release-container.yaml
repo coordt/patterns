@@ -1,4 +1,4 @@
-name: Build and release container
+{% raw %}name: Build and release container
 on:
   workflow_call:
     inputs:
@@ -78,3 +78,4 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+  {% endraw %}

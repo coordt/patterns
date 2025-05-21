@@ -1,9 +1,9 @@
-{% raw %}name: Bump the version on merge
+name: Bump the version on merge
 on:
   pull_request:
     types: [closed]
     branches: [{{ default_branch }}]
-
+{% raw %}
 jobs:
   bump-version:
     runs-on: ubuntu-latest

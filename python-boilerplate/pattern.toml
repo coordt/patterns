@@ -33,8 +33,9 @@ template_location = "{{ repo_name }}"
 [[questions]]
 name = "project_name"
 prompt = "What is the human-friendly name of the project?"
+help = "For example, 'My Project'"
 type = "str"
-default = "My Project"
+default = ""
 
 [[questions]]
 name = "package_name"
@@ -64,16 +65,16 @@ default = "0.1.0"
 name = "author"
 prompt = "What is the name of the author?"
 type = "str"
-default = "Who am I?"
+default = ""
 
 [[questions]]
 name = "email"
-default = "whoami@existential-crisis.doom"
+default = ""
 type = "str"
 prompt = "What is the author's email address?"
 
 [[questions]]
 name = "github_user"
-default = "whoami"
+default = ""
 type = "str"
 prompt = "What is the name of the GitHub user or organization?"
