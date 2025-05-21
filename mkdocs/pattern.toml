@@ -1,5 +1,11 @@
 template_location = "{{ repo_name }}"
 
+skip = [
+    "*.png",
+    "*.svg",
+    "*.ico",
+]
+
 [extra_context.dependencies]
 "docs" = [
     "black>=23.3.0",

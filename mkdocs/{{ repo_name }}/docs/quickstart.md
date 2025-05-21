@@ -1,7 +1,7 @@
 ---
 title: Quickstart 
 summary: Quickstart instructions for {{ project_name }}.
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 Getting started quickly with {{ project_name }}.

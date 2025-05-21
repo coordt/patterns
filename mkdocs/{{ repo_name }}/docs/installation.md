@@ -1,7 +1,7 @@
 ---
 title: Installation 
 summary: How to install {{ project_name }}. 
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 !!! warning

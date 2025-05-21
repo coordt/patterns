@@ -1,7 +1,7 @@
 ---
 title: Tutorials 
 summary: Tutorials for how to use {{ project_name }}.
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 This page provides tutorials on how to use {{ project_name }}.

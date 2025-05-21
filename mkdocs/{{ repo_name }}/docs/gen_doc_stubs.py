@@ -6,7 +6,7 @@ import mkdocs_gen_files
 
 nav = mkdocs_gen_files.Nav()
 
-src_root = Path("{{cookiecutter.project_slug}}")
+src_root = Path("{{ package_name }}")
 exclude: Set[str] = set()
 
 for path in sorted(src_root.rglob("*.py")):

@@ -1,12 +1,12 @@
 ---
 title: {{ project_name }}
-summary: {{ cookiecutter.project_short_description }}
-date: {% now 'local', '%Y-%m-%d' %}
+summary: {{ short_description }}
+date: {{ now.isoformat() }}
 ---
 
-# {{ cookiecutter.site_name }}
+# {{ project_name }}
 
-> *{{ cookiecutter.project_short_description }}*
+> *{{ short_description }}*
 
 ## What Next
 

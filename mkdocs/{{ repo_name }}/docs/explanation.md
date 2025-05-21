@@ -1,7 +1,7 @@
 ---
 title: Explanations
 summary: Why {{ project_name }} is the way it is!
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 This page explains why {{ project_name }} is the way it is.

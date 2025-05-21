@@ -1,7 +1,7 @@
 ---
 title: Development 
 summary: How to develop {{ project_name }}. 
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 # Installing from source for development
@@ -22,7 +22,7 @@ $ cd {{ repo_name }}
 $ uv sync --upgrade --all-groups
 ```
 
-Run {{cookiecutter.friendly_name}}'s tests from the source tree on your machine:
+Run {{ project_name }}'s tests from the source tree on your machine:
 
 ```shell
 $ uv run pytest

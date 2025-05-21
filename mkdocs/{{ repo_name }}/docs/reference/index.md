@@ -1,7 +1,7 @@
 ---
 title: Reference 
 summary: Technical reference of {{ project_name }}.
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 The *Reference* is intended as technical descriptions of the parts of {{ project_name }}.

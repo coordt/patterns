@@ -1,7 +1,7 @@
 ---
 title: How Tos 
 summary: Recipes for common tasks using {{ project_name }}.
-date: {% now 'local', '%Y-%m-%d' %}
+date: {{ now.isoformat() }}
 ---
 
 The *How To's* are intended as recipes for common tasks using {{ project_name }}. See the API reference for detailed reference documentation and function, class etc definitions. 
