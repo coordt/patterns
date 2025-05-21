@@ -1,0 +1,65 @@
+template_location = "{{ repo_name }}"
+
+[extra_context.dependencies]
+"prod" = []
+"test" = [
+    "coverage",
+    "pre-commit",
+    "pytest-cov",
+    "pytest",
+    "pytest-mock",
+]
+"dev" = [
+    "bump-my-version",
+    "generate-changelog",
+    "uv",
+]
+"docs" = []
+
+[[questions]]
+name = "project_name"
+prompt = "What is the human-friendly name of the project?"
+type = "str"
+default = "My Project"
+
+[[questions]]
+name = "package_name"
+prompt = "What is the name of the Python package?"
+type = "str"
+default = "{{ project_name|lower|replace(' ', '_') }}"
+
+[[questions]]
+name = "repo_name"
+prompt = "What is the name of the project repository?"
+type = "str"
+default = "{{ package_name|replace('_', '-') }}"
+
+[[questions]]
+name = "short_description"
+prompt = "Describe the project in one or two sentences:"
+type = "str"
+default = ""
+
+[[questions]]
+name = "version"
+prompt = "What is the initial version?"
+type = "str"
+default = "0.1.0"
+
+[[questions]]
+name = "author"
+prompt = "What is the name of the author?"
+type = "str"
+default = "Who am I?"
+
+[[questions]]
+name = "email"
+default = "whoami@existential-crisis.doom"
+type = "str"
+prompt = "What is the author's email address?"
+
+[[questions]]
+name = "github_user"
+default = "whoami"
+type = "str"
+prompt = "What is the name of the GitHub user or organization?"
